@@ -1,0 +1,24 @@
+{
+  "appId": "com.cyberwiki.hub",
+  "appName": "CyberWiki Hub",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0a0e1a",
+      "overlaysWebView": false
+    },
+    "Keyboard": {
+      "resize": "body",
+      "scrollPadding": true
+    }
+  }
+}

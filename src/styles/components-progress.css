@@ -1,0 +1,76 @@
+/* Progress Dashboard Styles */
+.progress-dashboard {
+  padding: 16px;
+}
+
+.progress-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--txt);
+}
+
+.progress-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.progress-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.progress-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.progress-stat-label {
+  font-size: 11px;
+  color: var(--txt);
+  margin-bottom: 2px;
+}
+
+.progress-stat-sub {
+  font-size: 10px;
+  color: var(--txt-muted);
+}
+
+.progress-bar-section {
+  margin-top: 16px;
+}
+
+.progress-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--txt-muted);
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--bg-card);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+@media (max-width: 480px) {
+  .progress-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

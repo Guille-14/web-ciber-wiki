@@ -1,0 +1,678 @@
+/* ═══════════════════════════════════════════════════════════════
+   CYBERPUNK THEME LAYER - CyberWiki Hub
+   Implements the "Intelligence & Defense Arsenal" look:
+   cyber grid background, neon glows, glass panels, gradient
+   borders, tech typography. Loaded LAST to override base layers.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   BACKGROUND: cyber grid + glowing orbs
+   ───────────────────────────────────────────── */
+body {
+  background-color: var(--bg-base, #060913);
+  background-image:
+    linear-gradient(rgba(0, 243, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+/* Glow orb top-center (purple) */
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: 40%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(181, 53, 255, 0.09) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Glow orb bottom-right (cyan) */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -5%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY: tech headings (Rajdhani)
+   ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.font-tech,
+.modal-title,
+.section-title,
+.card-title,
+.guide-card-title,
+.owasp-card-title,
+.pillar-card-term,
+.guides-hero-title,
+.chat-header-title,
+.chat-welcome h3,
+.nav-group-title,
+.aotd-label,
+.brand {
+  font-family: var(--font-tech);
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   TEXT GLOWS (reference utility classes)
+   ───────────────────────────────────────────── */
+.text-glow-cyan   { text-shadow: 0 0 8px rgba(0, 243, 255, 0.6); }
+.text-glow-purple { text-shadow: 0 0 8px rgba(181, 53, 255, 0.6); }
+.text-glow-green  { text-shadow: 0 0 8px rgba(0, 255, 102, 0.6); }
+
+/* ─────────────────────────────────────────────
+   GRADIENT ANIMATED BORDER
+   ───────────────────────────────────────────── */
+.gradient-border-animated {
+  position: relative;
+  background: #0d1323;
+  border-radius: 0.5rem;
+  z-index: 1;
+}
+.gradient-border-animated::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 0.6rem;
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), var(--neon-green));
+  background-size: 200% 200%;
+  z-index: -1;
+  animation: moveGradient 4s linear infinite;
+}
+
+@keyframes moveGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* AOTD banner becomes the animated hero card */
+.aotd-banner {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.08), rgba(181, 53, 255, 0.08));
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  box-shadow: 0 0 18px rgba(0, 243, 255, 0.08);
+}
+.aotd-banner:hover {
+  border-color: rgba(0, 243, 255, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 243, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   SIDEBAR & HEADER: glass panels
+   ───────────────────────────────────────────── */
+.sidebar {
+  background: rgba(8, 13, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.content-header {
+  background: rgba(9, 14, 28, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.brand .highlight { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 243, 255, 0.6); }
+.brand-badge {
+  background: linear-gradient(90deg, rgba(0, 243, 255, 0.15), rgba(181, 53, 255, 0.15));
+  border: 1px solid rgba(0, 243, 255, 0.4);
+  color: var(--neon-cyan);
+}
+
+/* Nav links: hover + active like reference .nav-item-active */
+.nav-link, .filter-btn {
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+}
+.nav-link:hover, .filter-btn:hover {
+  background: rgba(148, 163, 184, 0.08);
+  color: #ffffff;
+}
+.nav-link.active {
+  background: linear-gradient(90deg, rgba(0, 243, 255, 0.16) 0%, rgba(0, 243, 255, 0) 100%);
+  border-left: 3px solid var(--neon-cyan);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: inset 0 0 14px rgba(0, 243, 255, 0.06);
+}
+.filter-btn.active {
+  background: linear-gradient(90deg, rgba(0, 243, 255, 0.16), rgba(0, 243, 255, 0.04));
+  border-left: 3px solid var(--neon-cyan);
+  color: #ffffff;
+  font-weight: 600;
+}
+.nav-link.nav-link-secondary.active {
+  background: linear-gradient(90deg, rgba(181, 53, 255, 0.16), rgba(181, 53, 255, 0));
+  border-left: 3px solid var(--neon-purple);
+  color: var(--neon-purple);
+  box-shadow: none;
+}
+
+/* ─────────────────────────────────────────────
+   SEARCH: rounded pill
+   ───────────────────────────────────────────── */
+.search-input {
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  padding-left: 40px;
+}
+.search-input:focus {
+  border-color: rgba(0, 243, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.14), 0 0 16px rgba(0, 243, 255, 0.1);
+}
+
+/* ─────────────────────────────────────────────
+   CARDS: cyber-card look (blur + cyan hover glow)
+   ───────────────────────────────────────────── */
+.card, .guide-card, .owasp-card, .pillar-card,
+.related-card, .history-item, .server-item,
+.article-nav-btn, .chat-container, .search-autocomplete {
+  background: rgba(13, 19, 35, 0.7);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.card:hover, .guide-card:hover, .owasp-card:hover,
+.pillar-card:hover, .related-card:hover, .history-item:hover,
+.server-item:hover, .article-nav-btn:hover {
+  border-color: rgba(0, 243, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 243, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.card::before {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(181, 53, 255, 0.04) 50%, rgba(0, 255, 102, 0.03));
+}
+.card:hover::before { opacity: 1; }
+
+.card-title {
+  color: var(--text-bright);
+}
+.card:hover .card-title {
+  color: var(--neon-cyan);
+}
+
+/* Tags: reference .pill-tag */
+.card-tag, .guide-card-tag {
+  background: rgba(30, 58, 138, 0.35);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #93c5fd;
+  border-radius: 999px;
+}
+.card-tag:hover {
+  background: rgba(0, 243, 255, 0.12);
+  border-color: rgba(0, 243, 255, 0.5);
+  color: var(--neon-cyan);
+}
+
+/* Badges & danger buttons → neon tints (override old palette) */
+.category-badge {
+  background: rgba(0, 243, 255, 0.12);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  color: var(--neon-cyan);
+}
+.difficulty-easy,
+.difficulty-beginner {
+  background: rgba(0, 255, 102, 0.13);
+  border: 1px solid rgba(0, 255, 102, 0.35);
+}
+.difficulty-medium,
+.difficulty-intermediate {
+  background: rgba(255, 189, 46, 0.13);
+  border: 1px solid rgba(255, 189, 46, 0.35);
+}
+.difficulty-hard,
+.difficulty-advanced {
+  background: rgba(255, 51, 102, 0.13);
+  border: 1px solid rgba(255, 51, 102, 0.35);
+}
+.btn-danger {
+  border-color: rgba(255, 51, 102, 0.3);
+}
+.btn-danger:hover {
+  background: rgba(255, 51, 102, 0.12);
+  border-color: rgba(255, 51, 102, 0.5);
+}
+.nav-badge-ai {
+  box-shadow: 0 0 10px rgba(181, 53, 255, 0.4);
+}
+
+.tag-cloud-item {
+  border-radius: 999px;
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  background: rgba(13, 19, 35, 0.7);
+}
+.tag-cloud-item:hover {
+  border-color: rgba(0, 243, 255, 0.6);
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   MODAL: neon border + glow
+   ───────────────────────────────────────────── */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-content {
+  background: #0b1021;
+  border: 1px solid rgba(0, 243, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.15), var(--shadow-modal);
+}
+.modal-header {
+  background: rgba(15, 23, 42, 0.6);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+}
+.modal-toc {
+  border-right: 1px solid rgba(51, 65, 85, 0.5);
+}
+.modal-toc-link:hover,
+.modal-toc-link.active {
+  border-left-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+.modal-toc-link.active {
+  background: rgba(0, 243, 255, 0.08);
+}
+.modal-title {
+  color: #ffffff;
+}
+.modal-close:hover,
+.modal-action-btn:hover {
+  border-color: rgba(0, 243, 255, 0.5);
+  color: var(--neon-cyan);
+}
+
+/* ─────────────────────────────────────────────
+   ARTICLE / MARKDOWN CONTENT (reference .wiki-content)
+   ───────────────────────────────────────────── */
+.modal-body h2, .guide-content h2, .guide-modal-body h2,
+.chat-msg-content h2 {
+  color: var(--neon-cyan);
+  font-family: var(--font-tech);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+.modal-body h3, .guide-content h3, .guide-modal-body h3,
+.chat-msg-content h3 { color: #e2e8f0; }
+
+.modal-body pre, .guide-content pre, .guide-modal-body pre,
+.chat-msg-content pre {
+  background: #050811;
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  border-radius: 0.5rem;
+  color: var(--neon-green);
+  font-family: var(--font-mono);
+}
+.modal-body pre code, .guide-content pre code,
+.chat-msg-content pre code { color: var(--neon-green); }
+
+.modal-body code, .guide-content code, .guide-modal-body code,
+.chat-msg-content code {
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--neon-cyan);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+}
+
+/* Code blocks (cheatsheets / terminal) */
+.code-block-wrapper, .terminal-block {
+  background: #050811;
+  border-color: rgba(51, 65, 85, 0.6);
+}
+.code-block-header {
+  background: rgba(5, 8, 17, 0.8);
+  border-bottom-color: rgba(51, 65, 85, 0.6);
+}
+.code-block-lang { color: var(--neon-cyan); }
+pre[class*="language-"] {
+  background: #050811 !important;
+}
+.cmd-text { color: var(--neon-green); }
+.cmd-prefix { color: var(--neon-cyan); }
+
+/* Admonition boxes → neon tints */
+.info-box    { border-left-color: var(--neon-cyan); background: rgba(0, 243, 255, 0.08); color: #bae6fd; }
+.tip-box     { border-left-color: var(--neon-green); background: rgba(0, 255, 102, 0.07); color: #a7f3d0; }
+.warning-box { border-left-color: var(--neon-yellow); background: rgba(255, 189, 46, 0.08); color: #fde68a; }
+.danger-box  { border-left-color: var(--neon-red); background: rgba(255, 51, 102, 0.08); color: #fecdd3; }
+
+/* Tables */
+.modal-body th, .guide-content th, .chat-msg-content th {
+  background: rgba(5, 8, 17, 0.95);
+  color: var(--neon-cyan);
+}
+.modal-body td, .modal-body th,
+.guide-content td, .guide-content th,
+.chat-msg-content td, .chat-msg-content th {
+  border-color: #1e293b;
+}
+.modal-body tr:nth-child(even) td { background: rgba(15, 23, 42, 0.4); }
+
+/* ─────────────────────────────────────────────
+   CHAT: purple/cyan accents
+   ───────────────────────────────────────────── */
+.chat-header { background: rgba(13, 19, 35, 0.85); border-bottom-color: rgba(51, 65, 85, 0.6); }
+.chat-avatar-ai, .chat-welcome-icon { border-color: var(--neon-purple); box-shadow: 0 0 10px rgba(181, 53, 255, 0.4); }
+.chat-msg-assistant .chat-msg-content {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(51, 65, 85, 0.6);
+}
+.chat-msg-user .chat-msg-content {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.12), rgba(181, 53, 255, 0.12));
+  border-color: rgba(0, 243, 255, 0.25);
+}
+.chat-send-btn {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  box-shadow: 0 0 14px rgba(181, 53, 255, 0.35);
+}
+.chat-quick-btn:hover {
+  border-color: rgba(181, 53, 255, 0.6);
+  color: var(--neon-purple);
+  background: rgba(181, 53, 255, 0.08);
+}
+.chat-input-wrapper:focus-within {
+  border-color: rgba(181, 53, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(181, 53, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   GUIDE / OWASP / GLOSSARY accents
+   ───────────────────────────────────────────── */
+.guides-hero {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.06), rgba(181, 53, 255, 0.06));
+  border-color: rgba(51, 65, 85, 0.6);
+}
+.guide-filter-btn.active {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  border-color: transparent;
+  color: #041018;
+  font-weight: 700;
+}
+.guide-filter-btn:hover {
+  border-color: rgba(0, 243, 255, 0.6);
+  color: var(--neon-cyan);
+}
+.guide-card-emoji-wrap {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.06), rgba(181, 53, 255, 0.06));
+}
+.guide-card-level-badge {
+  background: rgba(0, 243, 255, 0.15);
+  color: var(--neon-cyan);
+}
+.owasp-card-id { color: var(--neon-cyan); }
+.pillar-card-term { color: var(--neon-cyan); }
+.impact-high { color: var(--neon-red); background: rgba(255, 51, 102, 0.15); }
+.impact-medium { color: var(--neon-yellow); background: rgba(255, 189, 46, 0.12); }
+.impact-low { color: var(--neon-green); background: rgba(0, 255, 102, 0.12); }
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR: thin neon
+   ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: rgba(6, 9, 19, 0.8); }
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+
+/* Selection */
+::selection {
+  background: rgba(0, 243, 255, 0.35);
+  color: #041018;
+}
+
+/* ─────────────────────────────────────────────
+   LOADER: branded splash
+   ───────────────────────────────────────────── */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(0, 243, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(181, 53, 255, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, #060810 0%, #0d1020 50%, #0a0e17 100%);
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+.app-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.loader-icon {
+  border-radius: 50%;
+  filter: drop-shadow(0 0 18px rgba(0, 243, 255, 0.5));
+  animation: loaderPulse 2s ease-in-out infinite;
+}
+.loader-title {
+  font-family: var(--font-tech);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(0, 243, 255, 0.55);
+}
+.loader-bar {
+  width: 220px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-green));
+  background-size: 200% 100%;
+  animation: loaderSlide 1.2s linear infinite, moveGradient 3s linear infinite;
+}
+.loader-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes loaderSlide {
+  0% { margin-left: -40%; }
+  100% { margin-left: 100%; }
+}
+
+/* ─────────────────────────────────────────────
+   LIGHT THEME OVERRIDES
+   ───────────────────────────────────────────── */
+:root.light-theme {
+  background-image: none;
+}
+:root.light-theme body {
+  background-color: #eef1f7;
+  background-image: none;
+}
+:root.light-theme body::before,
+:root.light-theme body::after {
+  opacity: 0.5;
+}
+:root.light-theme .sidebar,
+:root.light-theme .content-header,
+:root.light-theme .modal-content,
+:root.light-theme .card,
+:root.light-theme .guide-card,
+:root.light-theme .owasp-card,
+:root.light-theme .pillar-card,
+:root.light-theme .related-card,
+:root.light-theme .history-item,
+:root.light-theme .server-item,
+:root.light-theme .article-nav-btn,
+:root.light-theme .chat-container,
+:root.light-theme .search-autocomplete {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+:root.light-theme .card:hover,
+:root.light-theme .guide-card:hover,
+:root.light-theme .owasp-card:hover,
+:root.light-theme .pillar-card:hover,
+:root.light-theme .related-card:hover,
+:root.light-theme .history-item:hover,
+:root.light-theme .server-item:hover {
+  border-color: #0099c9;
+  box-shadow: 0 4px 16px rgba(0, 153, 201, 0.12);
+}
+:root.light-theme .modal-body pre,
+:root.light-theme .guide-content pre,
+:root.light-theme .chat-msg-content pre {
+  background: #0d1117;
+  border-color: rgba(0, 166, 76, 0.35);
+}
+:root.light-theme .card-title { color: #0d1323; }
+:root.light-theme .card:hover .card-title { color: #0099c9; }
+:root.light-theme .nav-link.active {
+  background: linear-gradient(90deg, rgba(0, 153, 201, 0.12), rgba(0, 153, 201, 0));
+  color: #0d1323;
+}
+:root.light-theme ::selection {
+  background: rgba(0, 153, 201, 0.3);
+  color: #ffffff;
+}
+
+/* ─────────────────────────────────────────────
+   REDUCED MOTION: disable orb / gradient loops
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-border-animated::before,
+  .loader-bar-fill {
+    animation: none;
+  }
+  .loader-icon {
+    animation: none;
+  }
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+
+.reduce-motion .gradient-border-animated::before,
+.reduce-motion .loader-bar-fill {
+  animation: none;
+}
+.reduce-motion .loader-icon {
+  animation: none;
+}
+.reduce-motion body::before,
+.reduce-motion body::after {
+  display: none;
+}
+
+/* ═══ v5 · FRONTEND POLISH ═══ */
+
+/* ── Cards: glow hover neón ── */
+.card, .guide-card, .owasp-card, .cheatsheet-card, .article-card {
+  transition: transform .2s ease, border-color .2s ease, box-shadow .25s ease;
+}
+@media (hover: hover) {
+  .card:hover, .guide-card:hover, .owasp-card:hover, .cheatsheet-card:hover, .article-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 243, 255, 0.35);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.12), 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ── Sidebar: glassmorphism ── */
+.sidebar {
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(13, 19, 35, 0.75);
+  border-right: 1px solid rgba(0, 243, 255, 0.12);
+}
+
+/* ── Botones: glow pulse neón ── */
+.btn-primary, .search-btn, .chat-send-btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after, .search-btn::after, .chat-send-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left .4s ease;
+}
+.btn-primary:hover::after, .search-btn:hover::after, .chat-send-btn:hover::after {
+  left: 120%;
+}
+
+/* ── Búsqueda estilo terminal ── */
+.search-input, .chat-input, input[type="search"] {
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  background: rgba(5, 8, 17, 0.8);
+  color: var(--neon-cyan, #00f3ff);
+  font-family: var(--font-mono, monospace);
+}
+.search-input:focus, .chat-input:focus, input[type="search"]:focus {
+  border-color: var(--neon-cyan, #00f3ff);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+  outline: none;
+}
+
+/* ── Navegación: indicador activo neón ── */
+.nav-item.active, .nav-link.active, .tab.active {
+  border-left: 3px solid var(--neon-cyan, #00f3ff);
+  background: rgba(0, 243, 255, 0.08);
+}
+
+/* ── Scrollbar neón ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-darker, #050811); }
+::-webkit-scrollbar-thumb { background: rgba(0, 243, 255, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 243, 255, 0.5); }
+
+/* ── Animación de entrada ── */
+@keyframes neon-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.card, .guide-card, .owasp-card { animation: neon-fade-in .35s ease both; }
+@media (prefers-reduced-motion: reduce) { .card, .guide-card, .owasp-card { animation: none; } }

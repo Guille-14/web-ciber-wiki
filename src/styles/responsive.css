@@ -1,0 +1,297 @@
+/* ============================================
+   RESPONSIVE STYLES - CyberWiki Hub
+   Mobile-first responsive breakpoints
+   ============================================ */
+
+/* === SAFE AREA INSETS (notched phones) === */
+body {
+  padding-top: max(env(safe-area-inset-top), 0px);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* === TABLET (max-width: 1024px) === */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    z-index: var(--z-sidebar);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .content-header {
+    padding: max(env(safe-area-inset-top), var(--space-md)) var(--space-lg);
+  }
+  
+  .header-stats {
+    display: none;
+  }
+  
+  .articles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  
+  .guides-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  
+  .modal-body-wrapper {
+    flex-direction: column;
+  }
+  
+  .modal-toc {
+    display: none !important;
+  }
+  
+  .modal-body {
+    padding: var(--space-lg);
+  }
+  
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pillar-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === MOBILE (max-width: 768px) === */
+@media (max-width: 768px) {
+  .content-body {
+    padding: var(--space-md);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .guides-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-overlay {
+    padding: 0;
+  }
+  
+  .modal-content {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    height: 100%;
+  }
+  
+  .modal-header {
+    padding: var(--space-md);
+    flex-wrap: wrap;
+  }
+  
+  .modal-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .modal-body {
+    padding: var(--space-md);
+  }
+  
+  .chat-container {
+    height: calc(100vh - var(--header-height));
+    border-radius: 0;
+    border: none;
+  }
+  
+  .chat-msg-content {
+    max-width: 90%;
+  }
+  
+  .chat-quick-questions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .chat-quick-btn {
+    text-align: left;
+  }
+  
+  .kbd-hint {
+    display: none;
+  }
+  
+  .toast {
+    left: var(--space-md);
+    right: var(--space-md);
+    bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+  }
+  
+  .chat-input-area {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  
+  .chat-container {
+    height: calc(100dvh - var(--header-height));
+    border-radius: 0;
+    border: none;
+  }
+  
+  .guides-hero {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .guides-hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .guides-hero-stats {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .article-nav {
+    flex-direction: column;
+  }
+  
+  .back-to-top {
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+  }
+  
+  .owasp-card-header {
+    flex-direction: column;
+  }
+  
+  .guide-card-emoji-wrap {
+    height: 80px;
+    font-size: 2rem;
+  }
+}
+
+/* === SMALL PHONES (max-width: 480px) === */
+@media (max-width: 480px) {
+  .content-body {
+    padding: var(--space-sm);
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .aotd-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-sm);
+  }
+  
+  .search-container {
+    max-width: 100%;
+  }
+  
+  .header-clock {
+    display: none;
+  }
+  
+  .modal-actions {
+    flex-wrap: wrap;
+  }
+  
+  .chat-input-wrapper {
+    padding: var(--space-xs);
+  }
+  
+  .chat-send-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .server-item {
+    flex-wrap: wrap;
+  }
+  
+  .server-item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .guide-card-meta {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+}
+
+/* === LARGE SCREENS (min-width: 1280px) === */
+@media (min-width: 1280px) {
+  .content-body {
+    max-width: 1600px;
+    padding: var(--space-lg) var(--space-2xl);
+  }
+  
+  .articles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  
+  .modal-content {
+    max-width: 1100px;
+  }
+  
+  .modal-toc {
+    display: block;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  .sidebar,
+  .content-header,
+  .kbd-hint,
+  .reading-progress,
+  .chat-container,
+  .toast,
+  .back-to-top,
+  .aotd-banner,
+  .matrix-canvas,
+  .scanlines,
+  #particle-canvas {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+  }
+  
+  body {
+    color: #000;
+    background: #fff;
+  }
+  
+  .modal-overlay {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+  }
+  
+  .modal-content {
+    max-height: none;
+    box-shadow: none;
+    border: none;
+  }
+}

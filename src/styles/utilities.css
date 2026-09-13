@@ -1,0 +1,128 @@
+/* ============================================
+   UTILITIES - CyberWiki Hub
+   Reusable utility classes to replace inline styles
+   ============================================ */
+
+/* === VISIBILITY === */
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* === OPACITY === */
+.opacity-0 { opacity: 0; }
+.opacity-30 { opacity: 0.3; }
+.opacity-60 { opacity: 0.6; }
+.opacity-100 { opacity: 1; }
+
+/* === POINTER EVENTS === */
+.no-pointer-events {
+  pointer-events: none;
+}
+
+/* === TRANSITIONS === */
+.fade-in {
+  opacity: 0;
+  transition: opacity var(--transition-normal, 0.3s) ease;
+}
+
+.fade-in.active,
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* === LOADING STATE === */
+.is-loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* === TOAST NOTIFICATIONS === */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: var(--text-on-accent, #fff);
+  font-weight: 500;
+  font-size: 14px;
+  z-index: var(--z-toast, 6000);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.toast-notification.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toast-success {
+  background-color: var(--accent, #10b981);
+}
+
+.toast-error {
+  background-color: var(--toast-error, #ef4444);
+}
+
+.toast-warning {
+  background-color: var(--toast-warning, #f59e0b);
+}
+
+.toast-info {
+  background-color: var(--accent-blue, #3b82f6);
+}
+
+/* === ADMONITION BOXES === */
+.admonition-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* === SIDEBAR STATS === */
+.stat-label {
+  flex: 0 0 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat-count {
+  flex: 0 0 30px;
+  text-align: right;
+}
+
+/* === BODY SCROLL LOCK === */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* === SECTION TRANSITIONS === */
+.section-visible {
+  display: block;
+  opacity: 1;
+  transition: opacity var(--transition-normal, 0.3s) ease;
+}
+
+.section-hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* === SIDEBAR DIMMED === */
+.sidebar-dimmed {
+  opacity: 0.3;
+  pointer-events: none;
+}

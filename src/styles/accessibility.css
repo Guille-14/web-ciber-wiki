@@ -1,0 +1,438 @@
+/* ============================================
+   ACCESSIBILITY STYLES
+   CyberWiki Hub - Phase 4
+   ============================================ */
+
+/* Screen Reader Only (visually hidden, accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-blue);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Focus Visible Styles */
+.keyboard-nav *:focus {
+  outline: none;
+}
+
+.keyboard-nav *:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast focus for dark mode */
+@media (prefers-color-scheme: dark) {
+  .keyboard-nav *:focus-visible {
+    outline-color: #58a6ff;
+    box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.3);
+  }
+}
+
+/* High contrast focus for light mode */
+@media (prefers-color-scheme: light) {
+  .keyboard-nav *:focus-visible {
+    outline-color: #0969da;
+    box-shadow: 0 0 0 4px rgba(9, 105, 218, 0.3);
+  }
+}
+
+/* Focus styles for specific interactive elements */
+.keyboard-nav .nav-link:focus-visible,
+.keyboard-nav .filter-btn:focus-visible,
+.keyboard-nav .card:focus-visible,
+.keyboard-nav .guide-card:focus-visible,
+.keyboard-nav .tag-cloud-item:focus-visible,
+.keyboard-nav .chat-quick-btn:focus-visible,
+.keyboard-nav .modal-action-btn:focus-visible,
+.keyboard-nav .btn-small:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .matrix-canvas,
+  #matrix-canvas {
+    display: none !important;
+  }
+  
+  .particle-canvas,
+  #particle-canvas {
+    display: none !important;
+  }
+  
+  .scanlines {
+    display: none !important;
+  }
+  
+  .glitch,
+  .glitch::before,
+  .glitch::after {
+    animation: none !important;
+  }
+  
+  .shimmer,
+  .shimmer::after {
+    animation: none !important;
+  }
+  
+  .aotd-banner {
+    animation: none !important;
+  }
+  
+  .modal-content {
+    animation: none !important;
+  }
+  
+  .chat-msg {
+    animation: none !important;
+  }
+  
+  .card {
+    transition: none !important;
+  }
+  
+  .card:hover,
+  .guide-card:hover,
+  .pillar-card:hover,
+  .related-card:hover,
+  .history-item:hover {
+    transform: none !important;
+  }
+}
+
+/* User-controlled reduced motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.reduce-motion .matrix-canvas,
+.reduce-motion #matrix-canvas {
+  display: none !important;
+}
+
+.reduce-motion .particle-canvas,
+.reduce-motion #particle-canvas {
+  display: none !important;
+}
+
+.reduce-motion .scanlines {
+  display: none !important;
+}
+
+/* Allow motion when user prefers */
+.allow-motion .card:hover {
+  transform: translateY(-2px);
+}
+
+.allow-motion .modal-content {
+  animation: modalSlideUp 0.3s ease;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border: #000;
+    --border-light: #333;
+    --text-main: #000;
+    --text-bright: #000;
+    --text-dim: #333;
+  }
+  
+  .card {
+    border: 2px solid #000;
+  }
+  
+  .nav-link {
+    border: 1px solid transparent;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    border-color: #000;
+  }
+  
+  .modal-content {
+    border: 2px solid #000;
+  }
+  
+  .search-input {
+    border: 2px solid #000;
+  }
+  
+  .chat-input {
+    border: 2px solid #000;
+  }
+  
+  .btn-small {
+    border: 2px solid #000;
+  }
+  
+  .difficulty-badge {
+    border: 1px solid #000;
+  }
+  
+  .category-badge {
+    border: 1px solid #000;
+  }
+}
+
+/* Forced Colors Mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .card {
+    border: 1px solid ButtonText;
+  }
+  
+  .nav-link {
+    border: 1px solid ButtonText;
+  }
+  
+  .modal-content {
+    border: 1px solid ButtonText;
+  }
+  
+  .search-input {
+    border: 1px solid ButtonText;
+  }
+  
+  .chat-input {
+    border: 1px solid ButtonText;
+  }
+  
+  .btn-small {
+    border: 1px solid ButtonText;
+  }
+  
+  .theme-toggle,
+  .motion-toggle {
+    border: 1px solid ButtonText;
+  }
+  
+  a {
+    color: LinkText;
+  }
+  
+  a:visited {
+    color: VisitedText;
+  }
+}
+
+/* ARIA States */
+[aria-expanded="true"]::after {
+  content: ' ▼';
+}
+
+[aria-expanded="false"]::after {
+  content: ' ▶';
+}
+
+[aria-selected="true"] {
+  font-weight: 600;
+}
+
+[aria-hidden="true"]:not(.sidebar):not(.main-content) {
+  display: none;
+}
+
+[aria-busy="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Loading States for Screen Readers */
+.loading-indicator {
+  position: relative;
+}
+
+.loading-indicator::after {
+  content: 'Cargando...';
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Focus trap container */
+[aria-modal="true"]:not(.modal-content) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+/* Table Accessibility */
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+}
+
+/* Form Labels */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-glow);
+}
+
+/* Error States */
+[aria-invalid="true"],
+.input-error {
+  border-color: #da3633;
+  box-shadow: 0 0 0 3px rgba(218, 54, 51, 0.3);
+}
+
+.error-message {
+  color: #da3633;
+  font-size: var(--text-sm);
+  margin-top: 4px;
+}
+
+/* Success States */
+.input-success {
+  border-color: #238636;
+}
+
+/* Live Region Styles */
+[role="status"],
+[role="alert"],
+[role="log"] {
+  position: relative;
+}
+
+/* Keyboard Navigation Mode Indicator */
+.keyboard-nav body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-blue);
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* Responsive Accessibility */
+@media (max-width: 768px) {
+  .skip-to-content {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+  
+  .keyboard-nav *:focus-visible {
+    outline-width: 4px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .skip-to-content,
+  .kbd-hint,
+  .theme-toggle,
+  .motion-toggle,
+  .sidebar,
+  .content-header {
+    display: none !important;
+  }
+  
+  body {
+    color: #000;
+    background: #fff;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+}

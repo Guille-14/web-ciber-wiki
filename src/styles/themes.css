@@ -1,0 +1,277 @@
+/* ============================================
+   THEMES - CyberWiki Hub
+   Light theme, high-contrast, forced-colors
+   ============================================ */
+
+/* === LIGHT THEME === */
+:root.light-theme {
+  color-scheme: light;
+    
+    --bg-darker: #e8ecf3;
+    --bg-sidebar: #ffffff;
+    --bg-content: #eef1f7;
+    --bg-card: #ffffff;
+    --bg-card-hover: #eaf2ff;
+    --bg-code: #0d1117;
+    --bg-elevated: #ffffff;
+    
+    --border: #c3cddc;
+    --border-light: #d8dfea;
+    
+    --accent: #00a64c;
+    --accent-glow: rgba(0, 166, 76, 0.15);
+    --accent-blue: #0099c9;
+    --accent-blue-glow: rgba(0, 153, 201, 0.15);
+    --accent-blue-ghost: rgba(0, 153, 201, 0.04);
+    --accent-purple: #8a2be2;
+    --accent-purple-glow: rgba(138, 43, 226, 0.12);
+    --accent-cyan: #007b9c;
+    --accent-cyan-glow: rgba(0, 123, 156, 0.1);
+    
+    --text-main: #1f2937;
+    --text-bright: #0d1323;
+    --text-dim: #475569;
+    --text-muted: #64748b;
+    --text-on-accent: #ffffff;
+    
+    --difficulty-easy: #008a40;
+    --difficulty-medium: #9a6700;
+    --difficulty-hard: #d11a4a;
+    --difficulty-beginner: var(--difficulty-easy);
+    --difficulty-intermediate: var(--difficulty-medium);
+    --difficulty-advanced: var(--difficulty-hard);
+    --progress-bar: #0099c9;
+    --status-online: #008a40;
+    --status-error: #d11a4a;
+    --status-warning: #9a6700;
+    
+    --text-code: #24292f;
+    --text-code-error: #d11a4a;
+    --text-terminal: #0550ae;
+    
+    --terminal-red: #ff5f56;
+    --terminal-yellow: #ffbd2e;
+    --terminal-green: #27c93f;
+    
+    --overlay-bg: rgba(0, 0, 0, 0.3);
+    --modal-overlay-bg: rgba(0, 0, 0, 0.4);
+    
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 4px 16px rgba(0, 153, 201, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  
+  /* Light mode scrollbar */
+  ::-webkit-scrollbar-track {
+    background: #f0f2f5;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #d0d7de;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b949e;
+  }
+  
+  /* Light mode scanlines - disable */
+  .scanlines {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Light mode matrix canvas - disable */
+  #matrix-canvas {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Light mode code blocks - keep dark for readability */
+  .code-block-wrapper,
+  pre[class*="language-"] {
+    background: #0d1117;
+  }
+  
+  /* Light mode chat messages */
+  .chat-msg-user .chat-msg-content {
+    background: linear-gradient(135deg, rgba(0, 153, 201, 0.08), rgba(138, 43, 226, 0.08));
+    border-color: rgba(0, 153, 201, 0.2);
+  }
+  
+  .chat-msg-assistant .chat-msg-content {
+    background: #ffffff;
+    border-color: #c3cddc;
+  }
+  
+  /* Light mode input fields */
+  .search-input,
+  .chat-input,
+  .chat-settings-input,
+  .chat-settings-select,
+  .chat-settings-textarea {
+    background: #ffffff;
+    border-color: #c3cddc;
+    color: #1f2937;
+  }
+  
+  .search-input:focus,
+  .chat-input:focus {
+    border-color: #0099c9;
+    box-shadow: 0 0 0 3px rgba(0, 153, 201, 0.15);
+  }
+  
+  /* Light mode cards */
+  .card {
+    background: #ffffff;
+    border-color: #c3cddc;
+  }
+  
+  .card:hover {
+    background: #eaf2ff;
+    border-color: #0099c9;
+  }
+  
+  /* Light mode glitch - reduce opacity */
+  .glitch::before,
+  .glitch::after {
+    opacity: 0.4;
+  }
+  
+  /* Light mode toast */
+  .toast {
+    background: #ffffff;
+    border-color: #c3cddc;
+    color: #1f2937;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Light mode glitch - disable */
+  .glitch::before,
+  .glitch::after {
+    animation: none !important;
+  }
+
+  /* Light mode shimmer - reduce */
+  .shimmer::after {
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.03), transparent);
+  }
+  
+  /* Light mode kbd hint */
+  .kbd-hint {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #c3cddc;
+    color: #475569;
+  }
+}
+
+/* === HIGH CONTRAST MODE === */
+@media (prefers-contrast: high) {
+  :root {
+    --border: #000000;
+    --border-light: #333333;
+    --text-main: #000000;
+    --text-bright: #000000;
+    --text-dim: #333333;
+  }
+  
+  .card,
+  .modal-content,
+  .chat-container,
+  .guide-card,
+  .pillar-card,
+  .owasp-card,
+  .terminal-block,
+  .server-item,
+  .history-item,
+  .related-card,
+  .search-input,
+  .chat-input,
+  .btn-small,
+  .filter-btn,
+  .nav-link,
+  .guide-filter-btn,
+  .chat-quick-btn,
+  .chat-settings-input,
+  .chat-settings-select,
+  .chat-settings-textarea {
+    border-width: 2px;
+    border-color: #000000;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active,
+  .card:hover,
+  .filter-btn:hover,
+  .filter-btn.active {
+    border-color: #000000;
+  }
+  
+  .theme-toggle,
+  .motion-toggle {
+    border: 2px solid #000000;
+  }
+  
+  /* Remove glassmorphism */
+  .content-header,
+  .kbd-hint,
+  .toast {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: #ffffff;
+  }
+}
+
+/* === FORCED COLORS (Windows High Contrast) === */
+@media (forced-colors: active) {
+  .card,
+  .modal-content,
+  .chat-container,
+  .guide-card,
+  .pillar-card,
+  .owasp-card,
+  .terminal-block,
+  .server-item,
+  .history-item,
+  .related-card,
+  .search-input,
+  .chat-input,
+  .btn-small,
+  .filter-btn,
+  .nav-link,
+  .guide-filter-btn,
+  .chat-quick-btn,
+  .chat-settings-input,
+  .chat-settings-select,
+  .chat-settings-textarea,
+  .theme-toggle,
+  .motion-toggle {
+    border: 1px solid ButtonText;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    border-color: Highlight;
+  }
+  
+  a {
+    color: LinkText;
+  }
+  
+  a:visited {
+    color: VisitedText;
+  }
+  
+  .chat-send-btn {
+    background: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+  
+  .guide-filter-btn.active,
+  .filter-btn.active {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

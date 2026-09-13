@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Builds y distribución
+dist/
+android/app/build/
+android/build/
+.android/
+
+# APK (se publican en GitHub Releases, no en el historial)
+*.apk
+*.aab
+
+# Entornos locales / herramientas
+.env
+.env.*
+.claude/
+.vscode/
+.idea/
+
+# Logs y basura de sistema
+*.log
+.DS_Store
+__pycache__/
+*.pyc

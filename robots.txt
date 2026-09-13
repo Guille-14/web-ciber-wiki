@@ -1,0 +1,107 @@
+# CyberWiki Hub - Robots.txt
+# https://cyberwiki.app
+# Last updated: 2026-08-06
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /src/
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Sitemaps
+Sitemap: https://cyberwiki.app/sitemap.xml
+
+# Crawl-delay (optional, for polite crawlers)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp (Yahoo)
+Allow: /
+Crawl-delay: 2
+
+# Block AI scrapers (optional - uncomment if needed)
+# User-agent: GPTBot
+# Disallow: /
+#
+# User-agent: ChatGPT-User
+# Disallow: /
+#
+# User-agent: CCBot
+# Disallow: /
+#
+# User-agent: anthropic-ai
+# Disallow: /
+#
+# User-agent: ClaudeBot
+# Disallow: /
+
+# Allow social media crawlers for rich previews
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Allow search engine image crawlers
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot-Image
+Allow: /
+
+# Files and assets
+User-agent: *
+Allow: /icons/
+Allow: /images/
+Allow: /assets/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.svg
+Allow: *.ico
+Allow: *.woff
+Allow: *.woff2
+
+# Block sensitive paths
+User-agent: *
+Disallow: /config/
+Disallow: /backup/
+Disallow: /debug/
+Disallow: *.log
+Disallow: *.env
+Disallow: *.key
+
+# Hash-based routing note
+# CyberWiki uses hash-based routing (#/)
+# All content is accessible via hash URLs
+# Search engines can index hash URLs with proper implementation
+# Example: https://cyberwiki.app/#/articles/nmap
+
+# Language
+# Content is in Spanish (es)
+# No need for x-default or alternate language pages

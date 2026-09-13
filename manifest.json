@@ -1,0 +1,44 @@
+{
+  "name": "CyberWiki Hub - Enciclopedia de Ciberseguridad",
+  "short_name": "CyberWiki",
+  "description": "Enciclopedia completa de ciberseguridad con 2,800+ artículos, cheatsheets, glossario y chat IA.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "orientation": "any",
+  "scope": "./",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "developer",
+    "security"
+  ],
+  "prefer_related_applications": false
+}
